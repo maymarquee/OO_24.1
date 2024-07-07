@@ -195,10 +195,209 @@ class Ponto():
 
 
 class Triangulo():
+    
+    def __init__(self, lado1, lado2, lado3):
+
+        self._lado1 = lado1
+        self._lado2 = lado2
+        self._lado3 = lado3
+    
+    def setLado1(self, lado1):
+
+        if isinstance(lado1, float, int):
+            self._lado1 = lado1
+        else:
+            self._lado1 = 0
+
+    def getLado1(self):
+
+        return self._lado1
+    
+    def setLado2(self, lado2):
+
+        if isinstance( lado2, float, int):
+            self._lado2 = lado2
+        else:
+            self._lado2 = 0
+
+    def getLado2(self):
+
+        return self._lado2
+    
+    def setLado3(self, lado3):
+
+        if isinstance(lado3, float, int):
+            self._lado3 = lado3
+        else:
+            self._lado3 = 0
+
+    def getLado3(self):
+
+        return self._lado3
+    
+    def printaInfosBasicas(self):
+
+        print(f'O triângulo tem como lados {self._lado1}, {self._lado2} e {self._lado3}')
+
+    def perimetro(self):
+
+        self.p = self._lado1 + self._lado2 + self._lado3
+        return self.p
+
+    def setCor(self, cor):
+
+        self.cor = cor
+
+    def _verificaEquilatero(self):
+
+        auxiliar = False
+        if self._lado1 == self._lado2 == self._lado3:
+            self._lado1 = self._lado1
+            self._lado2 = self._lado2
+            self._lado3 = self._lado3
+            auxiliar = True
+            return auxiliar
+        else:
+            return auxiliar
+        
+    def _verificaIsosceles(self):
+
+        auxiliar = False
+        if self._lado1 == self._lado2 or self._lado1 == self._lado3 or self._lado2 == self._lado3:
+            self._lado1 = self._lado1
+            self._lado2 = self._lado2
+            self._lado3 = self._lado3
+            auxiliar = True
+            return auxiliar
+        else:
+            return auxiliar
+
+
+class TrianguloEquilatero(Triangulo):
+    
+    def __init__(self, lado1, lado2, lado3):
+        super().__init__(lado1, lado2, lado3)
+
+    def printaPerimetro(self):
+
+        verificar = self._verificaEquilatero()
+        if verificar is True:
+            perimetro = self.perimetro()
+            print(f'O perímetro do triângulo equilátero é {perimetro}')
+        else:
+            print('Os valores de lado escolhidos não correspondem a um triângulo equilátero, por favor, informe outros valores')
+    
+    def printarCor(self):
+
+        verificar = self._verificaEquilatero()
+        if verificar is True:
+            c = input("Escolha a cor do seu triângulo equilátero:")
+            self.cor = c
+            print(f'A cor do triângulo equilátero é: {self.cor}.')
+        else:
+            print('Os valores de lado escolhidos não correspondem a um triângulo equilátero, por favor, informe outros valores')
+
+    def area(self):
+
+        verficar = self._verificaEquilatero()
+        if verficar is True:
+            self.a = ((self._lado1**2 * math.sqrt(3))/4)
+            self.areaArredondada = round(self.a, 2)
+            return self.areaArredondada
+        else:
+            print('Os valores de lado escolhidos não correspondem a um triângulo equilátero, por favor, informe outros valores')
+
+    def printaArea(self):
+
+        verficar = self._verificaEquilatero()
+        if verficar is True:
+            area = self.areaArredondada
+            print(f'A área do triângulo equilátero é igual a {area}')
+        else:
+            print('Os valores de lado escolhidos não correspondem a um triângulo equilátero, por favor, informe outros valores')
+
+class TrianguloIsosceles(Triangulo):
+    
+    def __init__(self, lado1, lado2, lado3):
+        super().__init__(lado1, lado2, lado3)
+
+    def printaPerimetro(self):
+
+        verificar = self._verificaIsosceles()
+        if verificar is True:
+            perimetro = self.perimetro()
+            print(f'O perímetro do triângulo isósceles é {perimetro}')
+        else:
+            print('Os valores de lado escolhidos não correspondem a um triângulo isósceles, por favor, informe outros valores')
+
+    def printarCor(self):
+
+        verificar = self._verificaIsosceles()
+        if verificar is True:
+            c = input("Escolha a cor do seu triângulo isósceles:")
+            self.cor = c
+            print(f'A cor do triângulo isósceles é: {self.cor}.')
+        else:
+            print('Os valores de lado escolhidos não correspondem a um triângulo isósceles, por favor, informe outros valores')
+
+    def altura(self):
+        
+        if self._lado1 == self._lado2:
+            h = (self._lado1**2 - ((self._lado3**2)/4))**0.5
+            return h
+        elif self._lado1 == self._lado3:
+            h = (self._lado1**2 -((self._lado2**2)/4))**0.5
+            return h
+        elif self._lado2 == self._lado3:
+            h = (self._lado2**2-((self._lado1**2)/4))**0.5
+            return h
+        
+    def base(self):
+
+        if self._lado1 == self._lado2:
+            b = self._lado3
+            return b
+        elif self._lado1 == self._lado3:
+            b = self._lado2
+            return b
+        elif self._lado2 == self._lado3:
+            b = self._lado1
+            return b
+
+    def area(self):
+        verificar = self._verificaIsosceles()
+        altura = self.altura()
+        base = self.base()
+        if verificar is True:
+            a = (altura * base)/ 2
+            areaArredondada = round( a, 2)
+            return areaArredondada
+        else:
+            print('Os valores de lado escolhidos não correspondem a um triângulo isósceles, por favor, informe outros valores')
+
+    def printaArea(self):
+
+        verficar = self._verificaIsosceles()
+        if verficar is True:
+            area = self.area()
+            print(f'A área do triângulo isósceles é igual a {area}')
+        else:
+            print('Os valores de lado escolhidos não correspondem a um triângulo isósceles, por favor, informe outros valores')
+
+class TrianguloEscaleno(Triangulo):
     pass
 
 class Quadrado():
     pass
 
 class Retangulo():
+    pass
+
+class Trapezio():
+    pass
+
+class Poligono():
+    pass
+
+class Octal():
     pass
