@@ -271,6 +271,42 @@ class Triangulo():
             return auxiliar
         else:
             return auxiliar
+        
+    def _verificaEscaleno(self):
+
+        auxiliar = False
+        if self._lado1 != self._lado2 != self._lado3:
+            self._lado1 = self._lado1
+            self._lado2 = self._lado2
+            self._lado3 = self._lado3
+            auxiliar = True
+            return auxiliar
+        else:
+            return auxiliar
+        
+    def _verificaMaiorLado(self):
+
+        maiorlado = max(self._lado1, self._lado2, self._lado3)
+        return maiorlado
+    
+    def _verificaMenorLado(self):
+
+        menorlado = min(self._lado1, self._lado2, self._lado3)
+        return menorlado
+    
+    def _desigualdadetriangular(self):
+
+        auxiliar = False
+        if (self._lado1 + self._lado2) > self._lado3 and (self._lado2 + self._lado3) > self._lado1 and (self._lado1 + self._lado3) > self._lado2:
+            auxiliar = True
+            return auxiliar
+        else:
+            return auxiliar
+        
+    def _semiperimetro(self):
+
+        semi = (self._lado1 + self._lado2 + self._lado3)/2
+        return semi
 
 
 class TrianguloEquilatero(Triangulo):
@@ -385,7 +421,51 @@ class TrianguloIsosceles(Triangulo):
             print('Os valores de lado escolhidos não correspondem a um triângulo isósceles, por favor, informe outros valores')
 
 class TrianguloEscaleno(Triangulo):
-    pass
+    
+    def __init__(self, lado1, lado2, lado3):
+        super().__init__(lado1, lado2, lado3)
+
+    def printaCor(self):
+
+        verificar = self._verificaEscaleno()
+        if verificar is True:
+            c = input("Escolha a cor do seu triângulo escaleno:")
+            self.cor = c
+            print(f'A cor do triângulo escaleno é: {self.cor}.')
+        else:
+            print('Os valores de lado escolhidos não correspondem a um triângulo escaleno, por favor, informe outros valores')
+
+    def printaPerimetro(self):
+
+        verificar = self._verificaEscaleno()
+        if verificar is True:
+            perimetro = self.perimetro()
+            print(f'O perímetro do triângulo escaleno é {perimetro}')
+        else:
+            print('Os valores de lado escolhidos não correspondem a um triângulo escaleno, por favor, informe outros valores')
+
+
+
+    def area(self):
+        
+        s = self._semiperimetro()
+        a = (s*((s-self._lado1)*(s-self._lado2)*(s-self._lado3)))**0.5
+        return a
+    
+    def pintaArea(self):
+
+        verificar = self._verificaEscaleno()
+        desigual = self._desigualdadetriangular()
+        if verificar is True:
+            if desigual is True:
+                area = self.area()
+                areaArredondada = round(area, 2)
+                print(f'A área do triângulo escaleno é {areaArredondada}')
+            else:
+                print('Os valores escolhidos não formam um triângulo, por favor, informe outros valores.')
+        else:
+            print('Os valores de lado escolhidos não correspondem a um triângulo escaleno, por favor, informe outros valores')
+
 
 class Quadrado():
     pass
