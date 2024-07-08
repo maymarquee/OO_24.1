@@ -1,6 +1,5 @@
 from package.maths.terms import Ponto
 
-
 def criarPonto():
 
     ponto1 = Ponto(7,3)

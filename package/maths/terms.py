@@ -2,14 +2,13 @@ from math import pi
 import math
 from abc import ABC, abstractmethod
 
-class Reta():
+class Ponto():
 
     def __init__(self,x,y):
-
         self.__x = x
         self.__y = y
 
-    def setX(self, x):
+    def setX(self,x):
 
         if isinstance(x, float, int):
             self.__x = x
@@ -17,23 +16,62 @@ class Reta():
             self.__x = 0
 
     def getX(self):
-
         return self.__x
 
-    def setY(self, y):
+    def setY(self,y):
 
         if isinstance(y, float, int):
             self.__y = y
-        else:
+        else: 
             self.__y = 0
 
     def getY(self):
+        return self.__y 
 
-        return self.__y
+    def printarInit(self):
+        
+        print(f'O ponto está nas coordenadas {self.__x} e {self.__y}.')
+
+    def centro(self):
+        return f'({self.__x}, {self.__y})'
+    
+    def distancia(self):
+
+        dis = self.__y - self.__x
+        return dis
+
+    def distanciaAOrigem(self):
+
+        self.d = self.__x **2 + self.__y **2
+        self.raizded = math.sqrt(self.d)
+        return self.raizded
+    
+    def printaDistancia(self):
+        
+        self.distanciaAOrigem()
+        print(f'A distância do ponto à origem é igual a {self.raizded:.4f} unidades de comprimento.')
+
+    def setCor(self, cor):
+
+        self.cor = cor
+
+    def printarCor(self):
+
+        c = input("Escolha a cor do seu ponto:")
+        self.cor = c
+
+        print(f'A cor do ponto é: {self.cor}.')
+
+class Reta():
+
+    def __init__(self,x, y, z, w):
+
+        self.ponto1 = Ponto(x, y)
+        self.ponto2 = Ponto(z, w)
 
     def interpolar(self, a):
 
-        i = self.__x * a + self.__y
+        i = self.ponto1.distancia() * a + self.ponto2.distancia()
         return i
     
     def printaInterpolar(self):
@@ -45,7 +83,7 @@ class Reta():
     
     def model(self):
 
-        print(f'Os parâmetros do meu modelo de reta são: x={self.__x}, y={self.__y}')
+        print(f'Os parâmetros do meu modelo de reta são: x={self.ponto1.distancia()}, y={self.ponto2.distancia()}')
 
     def setCor(self, cor):
 
@@ -58,36 +96,12 @@ class Reta():
 
         print(f'A cor da reta é: {self.cor}.')
 
-
 class Circulo():
 
-    def __init__(self,x,y,r):
+    def __init__(self, centro, r):
 
-        self.__x = x
-        self.__y = y
+        self.__centro = centro
         self.__r = r
-
-    def setX(self,x):
-
-        if isinstance(x, float, int):
-            self.__x = x
-        else:
-            self.__x = 0
-
-    def getX(self):
-
-        return self.__x
-
-    def setY(self,y):
-
-        if isinstance(y, float, int):
-            self.__y = y
-        else: 
-            self.__y = 0
-
-    def getY(self):
-
-        return self.__y
 
     def setR(self,r):
 
@@ -102,7 +116,7 @@ class Circulo():
 
     def printarInit(self):
 
-        print(f'O círculo tem origem em {self.__x} e {self.__y} e raio igual a {self.__r}.')
+        print(f'O círculo tem centro em {self.__centro} e raio igual a {self.__r}.')
 
     def diametro(self):
 
@@ -141,58 +155,6 @@ class Circulo():
         self.cor = c
         print(f'A cor do círculo é: {self.cor}.')
 
-
-class Ponto():
-
-    def __init__(self,x,y):
-        self.__x = x
-        self.__y = y
-
-    def setX(self,x):
-
-        if isinstance(x, float, int):
-            self.__x = x
-        else:
-            self.__x = 0
-
-    def getX(self):
-        return self.__x
-
-    def setY(self,y):
-
-        if isinstance(y, float, int):
-            self.__y = y
-        else: 
-            self.__y = 0
-
-    def getY(self):
-        return self.__y 
-
-    def printarInit(self):
-        
-        print(f'O ponto está nas coordenadas {self.__x} e {self.__y}.')
-
-    def distanciaAOrigem(self):
-
-        self.d = self.__x **2 + self.__y **2
-        self.raizded = math.sqrt(self.d)
-        return self.raizded
-    
-    def printaDistancia(self):
-        
-        self.distanciaAOrigem()
-        print(f'A distância do ponto à origem é igual a {self.raizded:.4f} unidades de comprimento.')
-
-    def setCor(self, cor):
-
-        self.cor = cor
-
-    def printarCor(self):
-
-        c = input("Escolha a cor do seu ponto:")
-        self.cor = c
-
-        print(f'A cor do ponto é: {self.cor}.')
 
 
 class Triangulo(ABC):

@@ -1,10 +1,9 @@
-from package.maths.terms import Circulo
+from package.maths.terms import Circulo, Ponto
 
 
 def criarCirculo():
-    
-    circulo1 = Circulo(4,2,5)
-    #circulo1.setCor('vermelho')
+    objeto = Ponto(2, 3)
+    circulo1 = Circulo(objeto.centro(), 5)
     circulo1.printarInit()
     circulo1.printaDiametro()
     circulo1.printarArea()
