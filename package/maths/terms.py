@@ -1,5 +1,6 @@
 from math import pi
 import math
+from abc import ABC, abstractmethod
 
 class Reta():
 
@@ -194,7 +195,7 @@ class Ponto():
         print(f'A cor do ponto é: {self.cor}.')
 
 
-class Triangulo():
+class Triangulo(ABC):
     
     def __init__(self, lado1, lado2, lado3):
 
@@ -504,19 +505,342 @@ class TrianguloEscaleno(Triangulo):
                 print('Os valores de lado escolhidos não correspondem a um triângulo escaleno, por favor, informe outros valores')
         else:
             print('Os valores escolhidos não formam um triângulo, por favor, informe outros valores.')
-
+       
 
 class Quadrado():
-    pass
+
+    def __init__(self, lado1, lado2, lado3, lado4):
+
+        self.__lado1 = lado1
+        self.__lado2 = lado2
+        self.__lado3 = lado3
+        self.__lado4 = lado4
+
+    def setLado1(self, lado1):
+
+        if isinstance(lado1, float, int):
+            self.__lado1 = lado1
+        else:
+            self.__lado1 = 0
+
+    def getLado1(self):
+
+        return self.__lado1
+    
+    def setLado2(self, lado2):
+
+        if isinstance( lado2, float, int):
+            self.__lado2 = lado2
+        else:
+            self.__lado2 = 0
+
+    def getLado2(self):
+
+        return self.__lado2
+    
+    def setLado3(self, lado3):
+
+        if isinstance(lado3, float, int):
+            self.__lado3 = lado3
+        else:
+            self.__lado3 = 0
+
+    def getLado3(self):
+
+        return self.__lado3
+    
+    def setLado4(self,lado4):
+
+        if isinstance(lado4, float, int):
+            self.__lado4 = lado4
+        else:
+            self.__lado4 = 0
+
+    def getLado4(self):
+
+        return self.__lado4
+    
+    def printaInfosBasicas(self):
+
+        print(f'O quadrado tem como lados {self.__lado1}, {self.__lado2}, {self.__lado3} e {self.__lado4}.')
+
+    def _verificaQuadrado(self):
+
+        auxiliar = False
+        if self.__lado1 == self.__lado2 == self.__lado3 == self.__lado4:
+            auxiliar = True
+            return auxiliar
+        else:
+            return auxiliar      
+
+    def perimetro(self):
+
+        p = self.__lado1**2
+        return p
+
+    def printaPerimentro(self):
+
+        verificador = self._verificaQuadrado()
+        if verificador is True:
+            perimetro = self.perimetro()
+            print(f'O perímetro do quadrado é igual a {perimetro}')
+        else:
+            print('Os valores de lado escolhidos não correspondem a um quadrado, por favor, informe outros valores')
+
+    def area(self):
+
+        a = self.__lado1**2
+        return a 
+    
+    def printaArea(self):
+
+        verificador = self._verificaQuadrado()
+        if verificador is True:
+            area = self.area()
+            print(f'A área do quadrado é igual a {area}')
+        else:
+            print(f'Os valores de lado escolhidos não correspondem a um quadrado, por favor, informe outros valores')
+
+    def diagonal(self):
+
+        d = self.__lado1 * math.sqrt(2)
+        dArredondada = round(d, 2)
+        return dArredondada
+    
+    def printaDiagonal(self):
+
+        verificador = self._verificaQuadrado()
+        if verificador is True:
+            diagonal = self.diagonal()
+            print(f'A diagonal do quadrado é igual a {diagonal}')
+        else:
+            print('Os valores de lado escolhidos não correspondem a um quadrado, por favor, informe outros valores')
+
+    def printaCor(self):
+
+        cor = input('Escolha a cor do quadrado:')
+        print(f'A cor do quadrado é {cor}.')
+
+class Poligono(ABC):
+    
+    def __init__(self, lado): 
+
+        self._lado = lado
+
+    def setLado(self, lado):
+
+        if isinstance(lado, float, int):
+            self._lado = self._lado
+        else:
+            self._lado = 0
+
+    def getLado(self):
+
+        return self._lado
+
+    def perimetro(self):
+
+        p = self.i * self._lado
+        return p
+    
+    @abstractmethod
+    def area(self):
+        pass
+
+    def setCor(self, cor):
+
+        self._cor = cor
+
+class Pentagono(Poligono):
+
+    def __init__(self, lado):
+        super().__init__(lado)
+        self.i = 5
+
+    def printaInfosBasicas(self):
+
+        print(f'Os lados do pentágono regular são {self._lado}, {self._lado}, {self._lado}, {self._lado} e {self._lado}. ')
+
+    def printaPerimetro(self):
+
+        perimetro = self.perimetro()
+        print(f'O perímetro do pentágono é igual a {perimetro}.')
+
+    def area(self): #polimorfismo na classe filha
+        
+        auxiliador = math.tan(36)
+        a = (5*self._lado**2)/(4*auxiliador)
+        aArredondada = round(a, 2)
+        return aArredondada
+    
+    def printaArea(self):
+
+        area = self.area()
+        print(f'A área do pentágono regular é igual a {area}')
+
+    def printaCor(self):
+
+        cor = input('Escolha a cor do pentágono regular:')
+        print(f'A cor do pentágono regular é {cor}.')
+
+class Hexagono(Poligono):
+
+    def __init__(self, lado):
+        super().__init__(lado)
+        self.i = 6
+
+    def printaInfosBasicas(self):
+
+        print(f'Os lados do hexágono regular são {self._lado}, {self._lado}, {self._lado}, {self._lado}, {self._lado} e {self._lado}. ')
+
+    def printaPerimetro(self):
+
+        perimetro = self.perimetro()
+        print(f'O perímetro do hexágono é igual a {perimetro}.')
+
+    def area(self): #polimorfismo na classe filha
+        a = (3*self._lado**2*math.sqrt(3))/2
+        aArredondada = round(a, 2)
+        return aArredondada
+    
+    def printaArea(self):
+
+        area = self.area()
+        print(f'A área do hexágono regular é igual a {area}')
+
+    def printaCor(self):
+
+        cor = input('Escolha a cor do hexágono regular:')
+        print(f'A cor do hexágono regular é {cor}.')
+
+class Heptagono(Poligono):
+
+    def __init__(self, lado):
+        super().__init__(lado)
+        self.i = 7
+
+    def printaInfosBasicas(self):
+
+        print(f'Os lados do heptágono regular são {self._lado}, {self._lado}, {self._lado}, {self._lado}, {self._lado}, {self._lado} e {self._lado}. ')
+
+    def printaPerimetro(self):
+
+        perimetro = self.perimetro()
+        print(f'O perímetro do heptágono é igual a {perimetro}.')
+
+    def area(self): #polimorfismo na classe filha
+
+        a = (3.634*self._lado**2)
+        aArredondada = round(a, 2)
+        return aArredondada
+    
+    def printaArea(self):
+
+        area = self.area()
+        print(f'A área do heptágono regular é igual a {area}.')
+
+    def printaCor(self):
+
+        cor = input('Escolha a cor do heptágono regular:')
+        print(f'A cor do heptágono regular é {cor}.')
+
+class Octogono(Poligono):
+
+    def __init__(self, lado):
+        super().__init__(lado)
+        self.i = 8
+
+    def printaInfosBasicas(self):
+
+        print(f'Os lados do octógono regular são {self._lado}, {self._lado}, {self._lado}, {self._lado}, {self._lado}, {self._lado}, {self._lado} e {self._lado}. ')
+
+    def printaPerimetro(self):
+
+        perimetro = self.perimetro()
+        print(f'O perímetro do octógono é igual a {perimetro}.')
+
+    def area(self): #polimorfismo na classe filha
+
+        a = (2*(1 + math.sqrt(2)*self._lado**2))
+        aArredondada = round(a, 2)
+        return aArredondada
+    
+    def printaArea(self):
+
+        area = self.area()
+        print(f'A área do octógono regular é igual a {area}.')
+
+    def printaCor(self):
+
+        cor = input('Escolha a cor do octógono regular:')
+        print(f'A cor do octógono regular é {cor}.')
 
 class Retangulo():
-    pass
+    
+    def __init__(self, lado1, lado2):
+        self.__lado1 = lado1
+        self.__lado2 = lado2
 
-class Trapezio():
-    pass
+    def setLado1(self, lado1):
 
-class Poligono():
-    pass
+        if isinstance(lado1, float, int):
+            self.__lado1 = lado1
+        else:
+            self.__lado1 = 0
 
-class Octal():
-    pass
+    def getLado1(self):
+
+        return self.__lado1
+    
+    def setLado2(self, lado2):
+
+        if isinstance( lado2, float, int):
+            self.__lado2 = lado2
+        else:
+            self.__lado2 = 0
+
+    def getLado2(self):
+
+        return self.__lado2
+    
+    def printaInfosBasicas(self):
+
+        print(f'O retângulo tem como lados {self.__lado1}, {self.__lado2}, {self.__lado1} e {self.__lado2}.')
+
+    def perimetro(self):
+
+        p = self.__lado1*2 + self.__lado2*2
+        return p
+
+    def printaPerimentro(self):
+
+        perimetro = self.perimetro()
+        print(f'O perímetro do retângulo é igual a {perimetro}.')
+
+    def area(self):
+
+        a = self.__lado1*self.__lado2
+        return a 
+    
+    def printaArea(self):
+
+            area = self.area()
+            print(f'A área do retângulo é igual a {area}.')
+
+    def diagonal(self):
+
+        d = self.__lado1**2 + self.__lado2**2
+        aux = math.sqrt(d)
+        dArrendondada = round(aux, 2)
+        return dArrendondada
+    
+    def printaDiagonal(self):
+
+            diagonal = self.diagonal()
+            print(f'A diagonal do retângulo é igual a {diagonal}.')
+
+    def printaCor(self):
+
+        cor = input('Escolha a cor do retângulo:')
+        print(f'A cor do retângulo é {cor}.')
+    
