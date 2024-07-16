@@ -10,4 +10,7 @@ def criarCirculo():
     circulo1.printarComprimento()
     circulo1.printarCor()
 
-criarCirculo()
+if __name__ == "__main__":
+    criarCirculo()
+else:
+    print("o arquivo 'testbench.py' foi envocado como modulo, envoque-o como programa")

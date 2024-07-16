@@ -8,4 +8,7 @@ def criaQuadrado():
     quadrado1.printaArea()
     quadrado1.printaDiagonal()
 
-criaQuadrado()
+if __name__ == "__main__":
+    criaQuadrado()
+else:
+    print("o arquivo 'testbench.py' foi envocado como modulo, envoque-o como programa")

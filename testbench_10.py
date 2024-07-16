@@ -8,4 +8,7 @@ def criarHeptagono():
     heptagono1.printaPerimetro()
     heptagono1.printaArea()
 
-criarHeptagono()
+if __name__ == "__main__":
+    criarHeptagono()
+else:
+    print("o arquivo 'testbench.py' foi envocado como modulo, envoque-o como programa")

@@ -8,4 +8,7 @@ def criarOctogono():
     Octogono1.printaPerimetro()
     Octogono1.printaArea()
 
-criarOctogono()
+if __name__ == "__main__":
+    criarOctogono()
+else:
+    print("o arquivo 'testbench.py' foi envocado como modulo, envoque-o como programa")

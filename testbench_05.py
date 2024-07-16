@@ -8,4 +8,7 @@ def criarTrianguloIsosceles():
     triangulo2.printaPerimetro()
     triangulo2.printaArea()
 
-criarTrianguloIsosceles()
+if __name__ == "__main__":
+    criarTrianguloIsosceles()
+else:
+    print("o arquivo 'testbench.py' foi envocado como modulo, envoque-o como programa")

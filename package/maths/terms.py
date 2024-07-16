@@ -49,7 +49,7 @@ class Ponto():
     def printaDistancia(self):
         
         self.distanciaAOrigem()
-        print(f'A distância do ponto à origem é igual a {self.raizded:.4f} unidades de comprimento.')
+        print(f'A distância do ponto à origem é igual a {self.raizded:.2f} unidades de comprimento.')
 
     def setCor(self, cor):
 

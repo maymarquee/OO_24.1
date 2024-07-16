@@ -1,7 +1,7 @@
 from package.maths.terms import Reta
 
 
-def workspace():
+def criaReta():
 
     segmento_1 = Reta(1, 3, 7, 4)
     segmento_1.model()
@@ -10,10 +10,6 @@ def workspace():
 
 
 if __name__ == "__main__":
-
-    print("O arquivo 'testbench.py' foi envocado como programa")
-    workspace()
-
+    criaReta()
 else:
-
-    print("o arquivo 'testbench.py' foi envocado como modulo")
+    print("o arquivo 'testbench.py' foi envocado como modulo, envoque-o como programa")

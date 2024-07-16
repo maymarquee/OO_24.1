@@ -9,4 +9,7 @@ def criarTrianguloEquilatero():
     triangulo1.area()
     triangulo1.printaArea()
 
-criarTrianguloEquilatero()
+if __name__ == "__main__":
+    criarTrianguloEquilatero()
+else:
+    print("o arquivo 'testbench.py' foi envocado como modulo, envoque-o como programa")

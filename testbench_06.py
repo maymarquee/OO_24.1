@@ -7,4 +7,7 @@ def criaTrianguloEscaleno():
     triangulo3.printaPerimetro()
     triangulo3.printaArea()
 
-criaTrianguloEscaleno()
+if __name__ == "__main__":
+    criaTrianguloEscaleno()
+else:
+    print("o arquivo 'testbench.py' foi envocado como modulo, envoque-o como programa")

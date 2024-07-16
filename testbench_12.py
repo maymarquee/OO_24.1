@@ -8,4 +8,7 @@ def criaRetangulo():
     quadrado1.printaArea()
     quadrado1.printaDiagonal()
 
-criaRetangulo()
+if __name__ == "__main__":
+    criaRetangulo()
+else:
+    print("o arquivo 'testbench.py' foi envocado como modulo, envoque-o como programa")

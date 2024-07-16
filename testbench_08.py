@@ -8,5 +8,7 @@ def criaPentagono():
     petagono1.printaPerimetro()
     petagono1.printaArea()
 
-
-criaPentagono()
+if __name__ == "__main__":
+    criaPentagono()
+else:
+    print("o arquivo 'testbench.py' foi envocado como modulo, envoque-o como programa")
