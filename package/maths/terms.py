@@ -112,7 +112,12 @@ class Reta():
     
     def printaInterpolar(self):
 
-        z = int(input("\nInsira o valor que deseja interpolar:"))
+        while True:
+            try:
+                z = int(input("\nInsira o valor que deseja interpolar:"))
+                break
+            except ValueError:
+                print('O valor inserido não é válido. Insira um número')
 
         print(f'\nInterpolando o valor {z}: i = {self.interpolar(z)}\n')
 

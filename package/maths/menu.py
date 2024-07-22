@@ -197,17 +197,22 @@ class Menu():
                         y_teq = int(input('Escolha a coordenada y do centro do triângulo: '))
 
                         verificador1 = Triangulo(lado1_teq, lado2_teq, lado3_teq, None)
+                        verificador6 = Triangulo(lado1_teq, lado2_teq, lado3_teq, None)
                         z1 = verificador1._verificaEquilatero() 
+                        z6 = verificador6._desigualdadetriangular()
                         
-                        if z1 == True:
+                        if z6 == True:
+                            if z1 == True:
 
-                            objpontoteq = Ponto(x_teq, y_teq)
-                            centroteq = objpontoteq.centro()
-                            objtrianguloeq = TrianguloEquilatero(lado1_teq, lado2_teq, lado3_teq, centroteq)
-                            self.dashboard.inserirForma(objtrianguloeq)
-                            break
+                                objpontoteq = Ponto(x_teq, y_teq)
+                                centroteq = objpontoteq.centro()
+                                objtrianguloeq = TrianguloEquilatero(lado1_teq, lado2_teq, lado3_teq, centroteq)
+                                self.dashboard.inserirForma(objtrianguloeq)
+                                break
+                            else:
+                                print('Os valores de lado escolhidos não correspondem a um triângulo equiláero, por favor, informe outros valores')
                         else:
-                            print('Os valores de lado escolhidos não correspondem a um triângulo equiláero, por favor, informe outros valores')
+                            print('Os valores escolhidos não formam um triângulo, por favor, informe outros valores.')
                     except ValueError:
                         print('O valor inserido não é válido. Insira um número')
 
@@ -241,18 +246,23 @@ class Menu():
                         lado3_ti = int(input('Escolha o lado 3 do triângulo: '))
                         x_tis = int(input('Escolha a coordenada x do centro do triângulo: '))
                         y_tis = int(input('Escolha a coordenada y do centro do triângulo: '))
-
+                        
+                        verificador5 = Triangulo(lado1_ti, lado2_ti, lado3_ti, None)
                         verificador = Triangulo(lado1_ti, lado2_ti, lado3_ti, None)
                         z = verificador._verificaIsosceles() 
+                        z5 = verificador5._desigualdadetriangular()
 
-                        if z == True:
-                            objpontotis = Ponto(x_tis, y_tis)
-                            centrotis = objpontotis.centro()
-                            objtriangulois = TrianguloIsosceles(lado1_ti, lado2_ti, lado3_ti, centrotis)
-                            self.dashboard.inserirForma(objtriangulois)
-                            break
+                        if z5 == True:
+                            if z == True:
+                                objpontotis = Ponto(x_tis, y_tis)
+                                centrotis = objpontotis.centro()
+                                objtriangulois = TrianguloIsosceles(lado1_ti, lado2_ti, lado3_ti, centrotis)
+                                self.dashboard.inserirForma(objtriangulois)
+                                break
+                            else:
+                                print('Os valores de lado escolhidos não correspondem a um triângulo isósceles, por favor, informe outros valores')
                         else:
-                            print('Os valores de lado escolhidos não correspondem a um triângulo isósceles, por favor, informe outros valores')
+                            print('Os valores escolhidos não formam um triângulo, por favor, informe outros valores.')
                     except ValueError:
                         print('O valor inserido não é válido. Insira um número')
 
@@ -288,17 +298,20 @@ class Menu():
                         y_tes = int(input('Escolha a coordenada y do centro do triângulo: '))
 
                         verificador2 = Triangulo(lado1_tes, lado2_tes, lado3_tes, None)
+                        verificador4 = Triangulo(lado1_tes, lado2_tes, lado3_tes, None)
+                        z4 = verificador4._desigualdadetriangular()
                         z2 = verificador2._verificaEscaleno() 
-
-                        if z2 == True:
-                            objpontotes = Ponto(x_tes, y_tes)
-                            centrotes = objpontotes.centro()
-                            objtrianguloes = TrianguloEscaleno(lado1_tes, lado2_tes, lado3_tes, centrotes)
-                            self.dashboard.inserirForma(objtrianguloes)
-                            break
+                        if z4 == True:
+                            if z2 == True:
+                                objpontotes = Ponto(x_tes, y_tes)
+                                centrotes = objpontotes.centro()
+                                objtrianguloes = TrianguloEscaleno(lado1_tes, lado2_tes, lado3_tes, centrotes)
+                                self.dashboard.inserirForma(objtrianguloes)
+                                break
+                            else:
+                                print('Os valores de lado escolhidos não correspondem a um triângulo escaleno, por favor, informe outros valores')
                         else:
-                            print('Os valores de lado escolhidos não correspondem a um triângulo escaleno, por favor, informe outros valores')
-
+                            print('Os valores escolhidos não formam um triângulo, por favor, informe outros valores.')
                     except ValueError:
                         print('O valor inserido não é válido. Insira um número')
 
@@ -577,6 +590,7 @@ class Menu():
             while True:
                 print('\nEscolha uma opção para consulta:')
                 print('1. Verificar interferências')
+                print('2. Sair')
 
                 escolha_ = input('\nDigite a opção escolhida: ')
 
@@ -605,11 +619,15 @@ class Menu():
                                 break
                             except KeyError:
                                 print('Digite corretamente o nome da forma geométrica que deseja verificar interferências.')
+
+                    elif escolha_ == 2:
+                        break
                         
                     else:
                         print('O número escolhido não é uma opção, por favor, escolha um número válido.')
                 else:
                     print('O valor inserido não corresponde a um número, por favor, escolha uma opção válida.')
+
 
     def listar(self):
 
