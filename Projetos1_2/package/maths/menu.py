@@ -618,7 +618,7 @@ class Menu():
                                 formag_escolhida.verificaInterferencias(x_p, y_p)
                                 break
                             except KeyError:
-                                print('Digite corretamente o nome da forma geométrica que deseja verificar interferências.')
+                                print('Digite corretamente o nome da forma geométrica que deseja verificar interferências, exemplo: Triângulo_Equilátero_1')
 
                     elif escolha_ == 2:
                         break
