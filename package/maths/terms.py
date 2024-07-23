@@ -58,7 +58,7 @@ class Ponto():
 
     def distanciaEntrePontos(self, x_p, y_p):
 
-        d = ((x_p - self.__x)**2 +(y_p - self.__y)) 
+        d = ((x_p - self.__x)**2 +(y_p - self.__y)**2)
         raizd = math.sqrt(d)
         darredondada = round(raizd, 2)
         return darredondada
@@ -123,8 +123,9 @@ class Reta():
 
     def distanciaEntrePontos(self):
         
-        d = ((self._x2 - self._x1)**2 +(self._y2 - self._y1)) 
-        raizd = math.sqrt(d)
+        d = ((self._x2 - self._x1)**2 +(self._y2 - self._y1)**2) 
+        raizd_ = abs(d)
+        raizd = math.sqrt(raizd_)
         darredondada = round(raizd, 2)
         return darredondada
 

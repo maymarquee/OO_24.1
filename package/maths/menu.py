@@ -625,9 +625,6 @@ class Menu():
                         
                     else:
                         print('O número escolhido não é uma opção, por favor, escolha um número válido.')
-                else:
-                    print('O valor inserido não corresponde a um número, por favor, escolha uma opção válida.')
-
 
     def listar(self):
 
